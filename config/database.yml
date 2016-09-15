@@ -1,0 +1,23 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: izzatbamieh1
+  password: izzatbamieh1
+
+development:
+  <<: *default
+  database: bicycle
+
+test:
+  <<: *default
+  database: izzy_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: production
+  pool: 5
+  username: izzatbamieh1
+  password: izzy678362!78Qu@ndel_D@shboArD%
