@@ -17,7 +17,7 @@ gem 'hashie'
 gem 'flexbox-rails'
 gem 'devise'
 
-group :development, :test do
+group :development do
   gem 'byebug'
   gem 'letter_opener'
   gem 'web-console'
