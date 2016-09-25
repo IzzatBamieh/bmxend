@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User do
-  before { @user = FactoryGirl.build(:user) }
+  before { @user = build(:user) }
 
   subject { @user }
 

@@ -3,14 +3,15 @@ require 'rails_helper'
 describe V1::UsersController, type: :controller do
 
   describe 'GET #show' do
+    let(:user) { create(:user) }
+
     before(:each) do
-      @user = FactoryGirl.create :user
-      get :show, id: @user.id, format: :json
+      get :show, id: user.id, format: :json
     end
 
     it 'returns user information' do
       user_response = JSON.parse(response.body, symbolize_names: true)
-      expect(user_response[:email]).to eql @user.email
+      expect(user_response[:email]).to eql user.email
       expect(response.status).to eq(200) 
     end
   end
@@ -19,7 +20,7 @@ describe V1::UsersController, type: :controller do
 
     context 'when is successfully created' do
       before(:each) do
-        @user_attributes = FactoryGirl.attributes_for :user
+        @user_attributes = attributes_for(:user)
         post :create, { user: @user_attributes }, format: :json
       end
 
@@ -51,12 +52,12 @@ describe V1::UsersController, type: :controller do
     end
   end
   describe 'PUT/PATCH #update' do
+    let(:user) { create(:user) }
 
     context 'when is successfully updated' do
       before(:each) do
         @email = Faker::Internet.email
-        @user = FactoryGirl.create :user
-        patch :update, { id: @user.id,
+        patch :update, { id: user.id,
                          user: { email: @email} }, format: :json
       end
 
@@ -68,10 +69,9 @@ describe V1::UsersController, type: :controller do
       it { expect(response.status).to eq(200) }
     end
 
-    context 'when is not created' do
+    context 'when is not updated' do
       before(:each) do
-        @user = FactoryGirl.create :user
-        patch :update, { id: @user.id,
+        patch :update, { id: user.id,
                          user: { email: 'bademail.com' } }, format: :json
       end
 
@@ -80,7 +80,7 @@ describe V1::UsersController, type: :controller do
         expect(user_response).to have_key(:errors)
       end
 
-      it 'renders the json errors on whye the user could not be created' do
+      it 'renders the json errors on whye the user could not be updated' do
         user_response = JSON.parse(response.body, symbolize_names: true)
         expect(user_response[:errors][:email]).to include 'is invalid'
       end
