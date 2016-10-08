@@ -15,6 +15,7 @@ gem 'haml-rails', '0.9.0'
 gem 'pg', '0.18.4'
 gem 'flexbox-rails', '1.0.1'
 gem 'devise', '4.2.0'
+gem 'paper_trail', '5.2.2'
 
 group :development do
   gem 'byebug'

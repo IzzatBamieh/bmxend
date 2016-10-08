@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006013502) do
+ActiveRecord::Schema.define(version: 20161008190806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 20161006013502) do
     t.string   "place_of_purchase"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "police_reports", force: :cascade do |t|
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.datetime "time_locked"
+    t.datetime "time_discovered_stolen"
+    t.string   "status"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+    t.integer  "bike_id"
+    t.index ["bike_id"], name: "index_police_reports_on_bike_id", using: :btree
+    t.index ["user_id"], name: "index_police_reports_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +59,16 @@ ActiveRecord::Schema.define(version: 20161006013502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  end
+
+  add_foreign_key "police_reports", "bikes"
+  add_foreign_key "police_reports", "users"
 end
