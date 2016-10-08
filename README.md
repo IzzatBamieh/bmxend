@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+2.30
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Setup your local env:
+1. run `bundle install`
+2. run `docker-machine create --driver virtualbox bmxend`
+3. run `docker-machine env bmxend`
+4. run `eval $(docker-machine env bmxend)`
+5. run `docker-compose up -d`
+6. run `bundle exec rake db:create`
+7. run `bundle exec rake db:migrate`
