@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+  - 2.3.0
+install: bundle install --without production --jobs=3 --retry=3
+cache: bundler
+
+sudo: false
+
+addons:
+ postgresql: "9.4"
+ # this did not seem to work with 9.4.1 !!
+ # Although it should have.
+
+script:
+  - RAILS_ENV=test bundle exec rspec spec/
+
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database bmxend_test;' -U postgres
+  - rake db:migrate
