@@ -1,6 +1,4 @@
-class V1::BikesController < ApplicationController
-  respond_to :json
-
+class V1::BikesController < V1::ApiController
   def show
     respond_with Bike.find(params[:id])
   end

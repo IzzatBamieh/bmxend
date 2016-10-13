@@ -1,6 +1,4 @@
-class V1::UsersController < ApplicationController
-  respond_to :json
-
+class V1::UsersController < V1::ApiController
   def show
     respond_with User.find(params[:id])
   end

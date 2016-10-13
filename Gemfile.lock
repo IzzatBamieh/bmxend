@@ -51,6 +51,7 @@ GEM
       will_paginate
     builder (3.2.2)
     byebug (9.0.5)
+    coderay (1.1.1)
     concurrent-ruby (1.0.2)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
@@ -129,6 +130,10 @@ GEM
     pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -211,6 +216,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     sexp_processor (4.7.0)
+    slop (3.6.0)
     spring (1.7.2)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -262,6 +268,7 @@ DEPENDENCIES
   letter_opener
   listen
   pg (= 0.18.4)
+  pry
   rails (~> 5.0.0, >= 5.0.0.1)
   rails_12factor (= 0.0.2)
   rspec-rails (= 3.5.2)
@@ -275,4 +282,4 @@ DEPENDENCIES
   will_paginate (= 3.1.0)
 
 BUNDLED WITH
-   1.12.5
+   1.13.2

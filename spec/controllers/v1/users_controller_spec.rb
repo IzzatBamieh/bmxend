@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe V1::UsersController, type: :controller do
-
+  
   describe 'GET #show' do
     let(:user) { create(:user) }
 
@@ -12,7 +12,7 @@ describe V1::UsersController, type: :controller do
     it 'returns user information' do
       user_response = JSON.parse(response.body, symbolize_names: true)
       expect(user_response[:email]).to eql user.email
-      expect(response.status).to eq(200) 
+      expect(response.status).to eq(200)
     end
   end
 

@@ -22,7 +22,7 @@ group :development do
   gem 'web-console'
   gem 'spring'
   gem 'rubocop'
-  gem 'listen'	
+  gem 'listen'
 end
 
 group :test do
@@ -31,6 +31,10 @@ group :test do
   gem 'faker', '1.6.6'
   gem 'rspec-rails', '3.5.2'
   gem 'database_cleaner', '1.5.3'
+end
+
+group :development, :test do
+  gem 'pry'
 end
 
 group :production do
