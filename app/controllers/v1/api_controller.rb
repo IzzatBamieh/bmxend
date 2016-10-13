@@ -4,7 +4,7 @@ class V1::ApiController < ApplicationController
 
   after_filter :set_headers
 
-  def preflight_request
+  def preflight_check
     render json: :ok
   end
 
