@@ -1,0 +1,4 @@
+test: &default
+  adapter: postgresql
+  username: postgres
+  database: bmxend_test
